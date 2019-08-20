@@ -32,6 +32,7 @@ const InputWrapper = styled.div`
   width: 200px;
   padding: 10px;
 `
+
 function App() {
   const [ phoneNumber, setPhoneNumber ] = useState("012-345-6789");
   const [ amount, setAmount ] = useState(1.00);
@@ -42,7 +43,9 @@ function App() {
   }
 
   function handleAmount(e) {
-    setAmount(parseFloat(e.target.value));
+    if (e.target.value > 0) {
+      setAmount(parseFloat(e.target.value));
+    } else setAmount(0);
   }
 
   function handleQR() {
